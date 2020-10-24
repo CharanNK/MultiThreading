@@ -20,12 +20,13 @@ public class ImmutableValue {
 	}
 	
 	class Calculator{
-		private ImmutableValueClass currentValue = null;
+		private ImmutableValueClass currentValue = null; //the reference to an immutable class is not thread safe
 		
 		public ImmutableValueClass getValue() {
 			return currentValue;
 		}
 		
+		//it is possible to change the reference through both setValue() and addValue() methods. Hence Calculator class is not immutable
 		public void setValue(ImmutableValueClass value) {
 			this.currentValue = value;
 		}
