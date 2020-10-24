@@ -21,7 +21,9 @@ public class SeperateObjects {
 			
 			
 			for(int i=0;i<10000;i++) {
-				count++;
+				synchronized (this) {
+					count++;
+				}
 			}
 			System.out.println(Thread.currentThread().getName()+" : "+this.count );
 		}
