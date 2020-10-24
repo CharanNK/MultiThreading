@@ -6,7 +6,8 @@ public class ImmutableValue {
 		private int value = 0;
 		
 		public ImmutableValueClass(int value) {
-			this.value = value;
+			this.value = value;		//once an immutable value instance is created you cannot change it's value.
+				//It is immutable
 		}
 		
 		public int getValue() {
@@ -15,6 +16,22 @@ public class ImmutableValue {
 		
 		public ImmutableValueClass add(int valueToAdd) {
 			return new ImmutableValueClass(this.value+valueToAdd);
+		}
+	}
+	
+	class Calculator{
+		private ImmutableValueClass currentValue = null;
+		
+		public ImmutableValueClass getValue() {
+			return currentValue;
+		}
+		
+		public void setValue(ImmutableValueClass value) {
+			this.currentValue = value;
+		}
+		
+		public void addValue(int valueToAdd) {
+			this.currentValue = this.currentValue.add(valueToAdd);
 		}
 	}
 
