@@ -33,6 +33,14 @@ public class FixedThreadExecutorDemo {
 			executor.execute(new Task(i+1));
 		
 		executor.shutdown();
+		
+		try {
+			if(!executor.awaitTermination(1000, TimeUnit.MILLISECONDS)) {
+				executor.shutdownNow();
+			}
+		}catch(InterruptedException ie) {
+			executor.shutdownNow();
+		}
 	}
 
 }
